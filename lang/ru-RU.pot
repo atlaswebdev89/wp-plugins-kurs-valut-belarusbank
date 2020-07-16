@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-07-16 12:30+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: kurs/wp-atl-kurs-valut.php:13
+msgid "Exchange rate Belarusbank by Atlas"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:14
+msgid "Creating widget for getting exchange rate of currencies  by Belarusbank"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:25
+msgid "Exchange rate of currencies"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:26
+msgid "Getting exchange rate from API Belarusbank"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:35 kurs/wp-atl-kurs-valut.php:59
+#: kurs/wp-atl-kurs-valut.php:130 kurs/wp-atl-kurs-valut.php:220
+msgid "Brest"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:36
+msgid "Grodno"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:37
+msgid "Vitebsk"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:38
+msgid "Minsk"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:39
+msgid "Mogilev"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:40
+msgid "Gomel"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:61 kurs/wp-atl-kurs-valut.php:223
+msgid "Exchange rate"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:65
+msgid "Title"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:70
+msgid "Select city"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:95
+msgid "Select update time, minutes"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:158 kurs/wp-atl-kurs-valut.php:216
+msgid "data null"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:159
+msgid "Error data:"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:160 kurs/wp-atl-kurs-valut.php:217
+msgid "Error update exchange rait"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:161
+msgid "Not selected exchange rait"
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:176
+msgid "Rait of currencies in "
+msgstr ""
+
+#: kurs/wp-atl-kurs-valut.php:177
+msgid "Latest update "
+msgstr ""

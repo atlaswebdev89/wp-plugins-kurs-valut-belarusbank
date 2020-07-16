@@ -1,18 +1,22 @@
 <?php
 /*
-Plugin Name: Курс валют Беларусбанк
-Description: Плагин виджета курсов валют Беларусбанк API
-Version: 1.0
+Plugin Name: Exchange rate Belarusbank by Atlas
+Description: Creating widget for getting exchange rate of currencies  by Belarusbank
+Version: 1.0.0
 Author: Atlas-it
 Author URI: http://atlas-it.by
+Text Domain: atl-wp-kurs-widget
+Domain Path: /lang/
 */
 
+// строки для перевода заголовков плагина, чтобы они попали в .po файл.
+__( 'Exchange rate Belarusbank by Atlas', 'atl-wp-kurs-widget' );
+__( 'Creating widget for getting exchange rate of currencies  by Belarusbank', 'atl-wp-kurs-widget' );
 
-//add_action( 'wp_enqueue_scripts', 'wp_curs_valut_style' );
-//function wp_curs_valut_style() {
-//    wp_enqueue_style ('css-style', plugin_dir_url( __FILE__ ).'/css/valut-kurs-style.css');   
-//}
- 
+/*langs file*/
+$plugin_dir = basename( dirname( __FILE__ ) );
+load_plugin_textdomain( 'atl-wp-kurs-widget', null, $plugin_dir.'/lang/' );
+
 add_action('widgets_init', 'atl_kurs');
 
 function atl_kurs () { 
@@ -20,12 +24,16 @@ function atl_kurs () {
 }
 
 class ATL_kurs extends WP_Widget {
+
+    protected $API = 'https://belarusbank.by/api/kursExchange?city=';
+    protected $plugin_path;
+    protected $fileTempkurs;
  
     public function __construct() {
     $args = array (
-        'name'=>'Курс валют Беларусбанка',
-        'description'=>'Получения курса валют через API Беларусбанка'
-         );
+            'name'=>__('Exchange rate of currencies','atl-wp-kurs-widget'),
+            'description'=>__('Getting exchange rate from API Belarusbank','atl-wp-kurs-widget'),
+             );
         parent::__construct ('atl_kurs', '', $args);
     }
     
@@ -33,14 +41,13 @@ class ATL_kurs extends WP_Widget {
  
         /*Список городов*/    
         $citys = array(
-                            'Брест',
-                            'Гродно',
-                            'Витебск',
-                            'Минск',
-                            'Могилев',
-                            'Гомель'
+                            __('Brest','atl-wp-kurs-widget'),
+                            __('Grodno','atl-wp-kurs-widget'),
+                            __('Vitebsk','atl-wp-kurs-widget'),
+                            __('Minsk','atl-wp-kurs-widget'),
+                            __('Mogilev','atl-wp-kurs-widget'),
+                            __('Gomel','atl-wp-kurs-widget')
                         );
-      
         /*Список валюты*/
                 $cash = array (
                             'USD',
@@ -57,18 +64,18 @@ class ATL_kurs extends WP_Widget {
                             360
                 );
                 
-        $city = isset($instance['city']) ? $instance['city']:'Брест'; 
+        $city = isset($instance['city']) ? $instance['city']:__('Brest','atl-wp-kurs-widget');
         $time_update_kurs =isset($instance['time_update'])?$instance['time_update']:120;
-        $title=isset($instance['title']) ? $instance['title']:'Курсы валют';
+        $title=isset($instance['title']) ? $instance['title']:__('Exchange rate','atl-wp-kurs-widget');
        ?>
         
             <p>
-                <label for = "<?php echo $this->get_field_id('title');?>">Заголовок</label>
+                <label for = "<?php echo $this->get_field_id('title');?>"><?php _e('Title','atl-wp-kurs-widget');?></label>
                 <input class="widefat title" id="<?php echo $this->get_field_id('title');?>" name="<?php echo $this->get_field_name('title');?>" value="<?php echo $title;?>">
             </p>
             
             <p>
-                <label for = "<?php echo $this->get_field_id('city');?>">Выберите город</label>
+                <label for = "<?php echo $this->get_field_id('city');?>"><?php _e('Select city','atl-wp-kurs-widget');?></label>
                 <select class = "widefat" id="<?php echo $this->get_field_id('city');?>" name="<?php echo $this->get_field_name('city');?>">
                         <option></option>
                     <?php  
@@ -93,7 +100,7 @@ class ATL_kurs extends WP_Widget {
             </p>
             
             <p>
-                <label for = "<?php echo $this->get_field_id('time_update');?>">Выберите период обновления, минуты</label>
+                <label for = "<?php echo $this->get_field_id('time_update');?>"><?php _e('Select update time, minutes','atl-wp-kurs-widget');?></label>
                 <select class = "widefat" id="<?php echo $this->get_field_id('time_update');?>" name="<?php echo $this->get_field_name('time_update');?>">
                         <option></option>
                     <?php  
@@ -128,7 +135,7 @@ class ATL_kurs extends WP_Widget {
                 /*Обновления файла с курсами*/
                 if($fff>($instance['time_update']*60)){ 
                             if (isset($instance['val']) && !empty($instance['val'])) {
-                                    $city = !empty($instance['city']) ? $instance['city']:'Брест';
+                                    $city = !empty($instance['city']) ? $instance['city']:__('Brest','atl-wp-kurs-widget');
                                     $url_kurs_belarusbank_api = 'https://belarusbank.by/api/kursExchange?city='.$city;
                                     $json_data = file_get_contents($url_kurs_belarusbank_api);  
                                   //Проверка полученных данных  
@@ -136,7 +143,7 @@ class ATL_kurs extends WP_Widget {
                                     $info = json_decode($json_data, true);
                                     if (is_array($info) && !empty($info)) {
                                         $cash_array = array();
-                                        $exc =0;
+                                        $exc = 0;
                                         foreach ($instance['val'] as $val) {
                                             foreach ($info as $data) { 
                                                 if ($data[$val.'_out'] !=0  && $data[$val.'_out']>$exc)
@@ -156,10 +163,10 @@ class ATL_kurs extends WP_Widget {
                                                                fwrite($f, $text."\r\n"); // запись в файл строк
                                                         }
                                             fclose($f);
-                                        }else error_log("Данные равны нулю");
-                                     }else error_log("Ошибочные данные $info");
-                                 } else error_log("Ошибка обновления курсов валют или данные пусты");
-                            }else error_log("Не выбраны курсы валют");
+                                        }else error_log(__('data null','atl-wp-kurs-widget'));
+                                     }else error_log(__('Error data:', 'atl-wp-kurs-widget').$info);
+                                 } else error_log(__('Error update exchange rait','atl-wp-kurs-widget'));
+                            }else error_log(__('Not selected exchange rait','atl-wp-kurs-widget'));
                         }
                 }
                   
@@ -174,8 +181,8 @@ class ATL_kurs extends WP_Widget {
                              <li><?php echo $vals[0].' - '.$vals[1]; ?></li>
                         <?php }; ?>
                     </ul>
-                    <p>Курсы валют на <?php echo current_time('d.m.Y');?></p>
-                    <p>Последнее обновление в <?php echo date('H:i:s',($timelast2+(3*3600)))?></p>
+                    <p><?php _e('Rait of currencies in ','atl-wp-kurs-widget');?><?php echo current_time('d.m.Y');?></p>
+                    <p><?php _e('Latest update ','atl-wp-kurs-widget');?><?php echo date('H:i:s',($timelast2+(3*3600)))?></p>
 
                 <?php   echo $args['after_widget'];
                   }
@@ -214,14 +221,18 @@ class ATL_kurs extends WP_Widget {
                                                            fwrite($f, $text."\r\n"); // запись в файл строк
                                                     }
                                         fclose($f);
-                                    }else error_log("Данные равны нулю");
-                                } else error_log("Ошибка обновления курсов валют");
+                                    }else error_log(__('data null','atl-wp-kurs-widget'));
+                                } else error_log(__('Error update exchange rait','atl-wp-kurs-widget'));
                     }else file_put_contents($fileTempKurs, '');
                 }
-                if (empty($new_instance['city'])){$new_instance['city'] = 'Брест';}
+                if (empty($new_instance['city'])){$new_instance['city'] = __('Brest','atl-wp-kurs-widget');}
                 if (empty($new_instance['time_update'])){$new_instance['time_update'] = 120;}
                 else {$new_instance['time_update']=(int)$new_instance['time_update']?$new_instance['time_update']:120;}
-                $new_instance['title']=!empty($new_instance['title'])?strip_tags($new_instance['title']):'Курсы валют';
+                $new_instance['title']=!empty($new_instance['title'])?strip_tags($new_instance['title']):__('Exchange rate','atl-wp-kurs-widget');
         return $new_instance;
+    }
+
+    protected function updatecurrencies () {
+
     }
 }
