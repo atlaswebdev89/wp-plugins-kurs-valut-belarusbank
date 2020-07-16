@@ -1,0 +1,45 @@
+version: '3.1'
+
+services:
+
+  wordpress_cat:
+    image: wordpress
+    restart: always
+    container_name: wp_category
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db_cat
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: exampledb
+    volumes:
+      - wordpress-cat:/var/www/html
+      - ./kurs/:/var/www/html/wp-content/plugins/atl-kurs/
+      - ./subPage/:/var/www/html/wp-content/plugins/atl-subPage/
+      - ./atl-wp-category-posts/:/var/www/html/wp-content/plugins/atl-wp-category-posts/
+    depends_on:
+        - db_cat
+    networks:
+      - project_cat
+  db_cat:
+    image: mysql:5.7
+    container_name: mysql_category
+    restart: always
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db-cat:/var/lib/mysql
+    networks:
+      - project_cat
+
+networks:
+  project_cat:
+    driver: bridge
+
+volumes:
+  wordpress-cat:
+  db-cat:
