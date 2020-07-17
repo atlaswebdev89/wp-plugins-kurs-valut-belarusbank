@@ -61,7 +61,6 @@ class ATL_kurs extends WP_Widget {
     }
     
     public function form ($instance) {
-        echo $this->number;
         /*Список городов*/    
                 $citys = array(
                             'Брест'     => __('Brest','atl-wp-kurs-widget'),
