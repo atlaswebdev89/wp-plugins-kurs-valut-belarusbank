@@ -1,7 +1,7 @@
 === Exchange rate Belarusbank by Atlas ===
 Contributors: atlas89
 Stable tag: 1.0.0
-Requires at least: 5.4.2
+Requires at least: 5.0
 Tested up to: 5.4.2
 Requires PHP: 5.2.4
 Tags: Exchange rate Belarusbank

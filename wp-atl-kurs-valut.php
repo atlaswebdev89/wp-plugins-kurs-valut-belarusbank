@@ -47,13 +47,12 @@ class ATL_kurs extends WP_Widget {
     /*Путь к папке с плагином*/
     protected $plugin_path;
     /*Файл для хранения курсов валют*/
-    protected $fileName = 'kurs.txt';
+    protected $fileName = 'kurs';
     /*Path for file kurs*/
     protected $fileTempkurs;
  
     public function __construct() {
         $this->plugin_path = plugin_dir_path( __FILE__ );
-        $this->fileTempkurs =  $this->plugin_path.$this->fileName;
         $args = array (
             'name'=>__('Exchange rate of currencies','atl-wp-kurs-widget'),
             'description'=>__('Getting exchange rate from API Belarusbank','atl-wp-kurs-widget'),
@@ -62,7 +61,7 @@ class ATL_kurs extends WP_Widget {
     }
     
     public function form ($instance) {
-
+        echo $this->number;
         /*Список городов*/    
                 $citys = array(
                             'Брест'     => __('Brest','atl-wp-kurs-widget'),
@@ -144,19 +143,22 @@ class ATL_kurs extends WP_Widget {
     }
     
     public function widget ($args, $instance) {
-        if (file_exists($this->fileTempkurs) && is_readable($this->fileTempkurs)) {
+        /*Temp file for save exchange rait in current Widget*/
+        $fileTempkurs =  $this->plugin_path.$this->fileName.'-'.$this->number.'.txt';
+
+        if (file_exists($fileTempkurs) && is_readable($fileTempkurs)) {
                         /*Время последнего обновления файла с курсами валют (unix)*/
-                        $timelast = filemtime($this->fileTempkurs);
+                        $timelast = filemtime($fileTempkurs);
                         /*Текущее время (unix)*/
                         $currentTime = time();
                         /*Время прошедшее с момента последнего обновления файла (unix)*/
                         $fff = $currentTime - $timelast;
                         /*Обновления файла с курсами*/
                         if ($fff > ($instance['time_update'] * 60)) {
-                            $this->updateCurrencies($instance);
+                            $this->updateCurrencies($instance, $fileTempkurs);
                         }
-                        $data = file($this->fileTempkurs, FILE_SKIP_EMPTY_LINES);
-                        $timelast2 = filemtime($this->fileTempkurs);
+                        $data = file($fileTempkurs, FILE_SKIP_EMPTY_LINES);
+                        $timelast2 = filemtime($fileTempkurs);
                 }
                     echo $args['before_widget'];
                     echo $args['before_title'].$instance['title'].$args['after_title'];
@@ -177,8 +179,9 @@ class ATL_kurs extends WP_Widget {
     }
 
     public function update ($new_instance, $old_instance) {
+                $fileTempkurs =  $this->plugin_path.$this->fileName.'-'.$this->number.'.txt';
                 /*Обновление курсов в файле при изменении настроек виджета*/
-                $this->updateCurrencies($new_instance);
+                $this->updateCurrencies($new_instance, $fileTempkurs);
 
                 if (empty($new_instance['city'])){$new_instance['city'] = 'Брест';}
                 if (empty($new_instance['time_update'])){$new_instance['time_update'] = 120;}
@@ -187,7 +190,7 @@ class ATL_kurs extends WP_Widget {
         return $new_instance;
     }
 
-    protected function updateCurrencies ($instance) {
+    protected function updateCurrencies ($instance, $file) {
                 if (isset($instance['val']) && !empty($instance['val'])) {
                     $city = !empty($instance['city']) ? $instance['city']:'Брест';
                     $url_kurs_belarusbank_api = $this->API.$city;
@@ -210,7 +213,7 @@ class ATL_kurs extends WP_Widget {
 
                             if (!empty($cash_array)) {
                                 /*Запись в файл*/
-                                $f = fopen($this->fileTempkurs, "w"); // открытие файла в режиме записи
+                                $f = fopen($file, "w"); // открытие файла в режиме записи
                                 foreach ($cash_array as $key=>$output)
                                 {
                                     $text = $key.'-'.$output;
