@@ -6,4 +6,4 @@
 
 [Wordpress Repositories](https://ru.wordpress.org/plugins/exchange-rate-belarusbank-by-atlas/)
 
-========================================================================
+********************************
