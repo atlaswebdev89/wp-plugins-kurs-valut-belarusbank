@@ -1,0 +1,105 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-19 20:58+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/functions.php:65
+msgid "The specified key already exists (UNIQUE constraint)"
+msgstr ""
+
+#: includes/functions.php:259 includes/functions.php:293
+msgid "Error update exchange rait"
+msgstr ""
+
+#: includes/getKurs.php:22
+msgid "Error request in databases"
+msgstr ""
+
+#: includes/getKurs.php:27
+msgid "Not current currence in database"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:7
+msgid "Exchange rate of currencies"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:8
+msgid "Getting exchange rate from API Belarusbank"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:16
+msgid "Brest"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:17
+msgid "Grodno"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:18
+msgid "Vitebsk"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:19
+msgid "Minsk"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:20
+msgid "Mogilev"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:21
+msgid "Gomel"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:41 widgets/atl-wp-widget-currency.php:130
+msgid "Exchange rate"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:45
+msgid "Title"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:50
+msgid "Select city"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:78
+msgid "Select update time, minutes"
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:118
+msgid "Rait of currencies in "
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:119
+msgid "Latest update "
+msgstr ""
+
+#: widgets/atl-wp-widget-currency.php:121
+msgid "No data available"
+msgstr ""
+
+#: wp-atl-kurs-valut.php:31
+msgid "Exchange rate Belarusbank by Atlas"
+msgstr ""
+
+#: wp-atl-kurs-valut.php:32
+msgid "Creating widget for getting exchange rate of currencies  by Belarusbank"
+msgstr ""

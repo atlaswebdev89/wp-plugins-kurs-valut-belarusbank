@@ -1,0 +1,55 @@
+version: '3.1'
+
+services:
+
+  wordpress:
+    image: wordpress
+    restart: always
+    container_name: kurs
+    ports:
+      - 8121:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: exampleuser
+      WORDPRESS_DB_PASSWORD: examplepass
+      WORDPRESS_DB_NAME: kurs
+    volumes:
+      - ./codes/v1.2.0/:/var/www/html/wp-content/plugins/kurs/
+      - kurs:/var/www/html
+    depends_on:
+        - db
+    networks:
+      - project_kurs
+  db:
+    image: mysql:5.7
+    container_name: mysql_kurs
+    restart: always
+    environment:
+      MYSQL_DATABASE: kurs
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db_kurs:/var/lib/mysql
+    networks:
+      - project_kurs
+      
+  phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        container_name: kurs_phpmyadmin
+        restart: always
+        ports: 
+          - 8927:80
+        environment:
+          PMA_HOST: db
+        depends_on:
+          - db
+        c
+          - project_kurs
+networks:
+  project_kurs:
+    driver: bridge
+
+volumes:
+  kurs:
+  db_kurs:

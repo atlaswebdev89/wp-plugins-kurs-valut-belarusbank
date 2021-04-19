@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: CurrencyApiBelarusbank\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-04-19 21:01+0300\n"
+"PO-Revision-Date: 2021-04-19 21:02+0300\n"
+"Last-Translator: \n"
+"Language-Team: atlasComp\n"
+"Language: ru_RU\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.2.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/functions.php:65
+msgid "The specified key already exists (UNIQUE constraint)"
+msgstr "Уже существует указанный ключ (Ограничение уникальности)"
+
+#: includes/functions.php:259 includes/functions.php:293
+msgid "Error update exchange rait"
+msgstr "Ошибка обновления курсов валют"
+
+#: includes/getKurs.php:22
+msgid "Error request in databases"
+msgstr ""
+"Ошибка получения курсов валют по указанному городу и ближайшему времени "
+"обновления"
+
+#: includes/getKurs.php:27
+msgid "Not current currence in database"
+msgstr "Указанной валюты нет в базе"
+
+#: widgets/atl-wp-widget-currency.php:7
+msgid "Exchange rate of currencies"
+msgstr "Курсы валют"
+
+#: widgets/atl-wp-widget-currency.php:8
+msgid "Getting exchange rate from API Belarusbank"
+msgstr "Получение курсов валют через API Беларусбанка"
+
+#: widgets/atl-wp-widget-currency.php:16
+msgid "Brest"
+msgstr "Брест"
+
+#: widgets/atl-wp-widget-currency.php:17
+msgid "Grodno"
+msgstr "Гродно"
+
+#: widgets/atl-wp-widget-currency.php:18
+msgid "Vitebsk"
+msgstr "Витебск"
+
+#: widgets/atl-wp-widget-currency.php:19
+msgid "Minsk"
+msgstr "Минск"
+
+#: widgets/atl-wp-widget-currency.php:20
+msgid "Mogilev"
+msgstr "Могилев"
+
+#: widgets/atl-wp-widget-currency.php:21
+msgid "Gomel"
+msgstr "Гомель"
+
+#: widgets/atl-wp-widget-currency.php:41 widgets/atl-wp-widget-currency.php:130
+msgid "Exchange rate"
+msgstr "Курсы валют"
+
+#: widgets/atl-wp-widget-currency.php:45
+msgid "Title"
+msgstr "Заголовок"
+
+#: widgets/atl-wp-widget-currency.php:50
+msgid "Select city"
+msgstr "Выберете город"
+
+#: widgets/atl-wp-widget-currency.php:78
+msgid "Select update time, minutes"
+msgstr "Укажите период обновления, минуты"
+
+#: widgets/atl-wp-widget-currency.php:118
+msgid "Rait of currencies in "
+msgstr "Курсы валют на "
+
+#: widgets/atl-wp-widget-currency.php:119
+msgid "Latest update "
+msgstr "Последнее обновление  "
+
+#: widgets/atl-wp-widget-currency.php:121
+msgid "No data available"
+msgstr "Нет данных"
+
+#: wp-atl-kurs-valut.php:31
+msgid "Exchange rate Belarusbank by Atlas"
+msgstr "Курс валют Беларусбанк"
+
+#: wp-atl-kurs-valut.php:32
+msgid "Creating widget for getting exchange rate of currencies  by Belarusbank"
+msgstr "Плагин виджета курсов валют Беларусбанк API"
+
+#~ msgid "Data null"
+#~ msgstr "Данные отсутствуют"
+
+#~ msgid "Error data:"
+#~ msgstr "Ошибка получения:"
+
+#~ msgid "Not selected exchange rait"
+#~ msgstr "Не выбраны валюты"
