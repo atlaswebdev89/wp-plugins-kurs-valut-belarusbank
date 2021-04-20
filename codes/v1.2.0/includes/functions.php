@@ -310,7 +310,7 @@ function wp_atl_data_create_from_widget ($number, $set_currency) {
                 }
             }
             if(isset($cash_array) && !empty($cash_array)) {
-                    $cash_array['time_update'] = date('d.m.Y H:i:s', strtotime(get_date_from_gmt($data->date_modify)));
+                    $cash_array['time_update'] = date('d.m.Y H:i:s', strtotime(($data->date_modify)));
                     $cash_array['city'] = $data->city;
                 return $cash_array;
             }else return FALSE;
