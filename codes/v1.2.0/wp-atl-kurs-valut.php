@@ -2,7 +2,7 @@
 /*
 Plugin Name: Exchange rate Belarusbank by Atlas
 Description: Creating widget for getting exchange rate of currencies  by Belarusbank
-Version: 1.2.0
+Version: 1.3.0
 Author: Atlas-it
 Author URI: http://atlas-it.by
 Text Domain: atl-wp-kurs-widget
