@@ -39,12 +39,12 @@ services:
         container_name: kurs_phpmyadmin
         restart: always
         ports: 
-          - 8927:80
+          - 8947:80
         environment:
           PMA_HOST: db
         depends_on:
           - db
-        c
+        networks:
           - project_kurs
 networks:
   project_kurs:
