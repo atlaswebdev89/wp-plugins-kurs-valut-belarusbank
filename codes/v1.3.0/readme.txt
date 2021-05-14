@@ -1,6 +1,6 @@
 === Exchange rate Belarusbank by Atlas ===
 Contributors: atlas89
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 Requires at least: 5.0
 Tested up to: 5.7
 Requires PHP: 5.2.4
@@ -63,6 +63,9 @@ API Беларусбанка - Адрес запроса: https://belarusbank.by
 Добавлен шорткод для перевода (конвертирование) указанной валюты в BIN (беларусский рубль)
 
 == Changelog ==
+
+= 1.3.0 =
+* Добавлена поддержка СУБД MariaDB
 
 = 1.2.0 =
 * Изменена схема хранения. Теперь используется отдельная таблица в БД
